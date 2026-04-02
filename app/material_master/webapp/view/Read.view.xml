@@ -1,0 +1,49 @@
+<mvc:View
+    controllerName="zmm_sbc_2903.controller.Read"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">   
+
+  <Page title="Read Material" showNavButton="true" navButtonPress="onBack">
+
+    <content>
+      <VBox class="sapUiMediumMargin">
+
+        <Label text="Material Number"/>
+        <Input id="searchMatnr" placeholder="Enter Material Number" class="sapUiSmallMarginBottom"/>
+        <Button text="Search" press="onSearch" type="Emphasized" icon="sap-icon://search"/>
+
+      </VBox>
+
+      <Table id="resultsTable" visible="false" class="sapUiMediumMarginTop">
+        <columns>
+          <Column><Text text="Material No."/></Column>
+          <Column><Text text="Type"/></Column>
+          <Column><Text text="Industry"/></Column>
+          <Column><Text text="Group"/></Column>
+          <Column><Text text="Status"/></Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{MATNR}"/>
+              <Text text="{MTART}"/>
+              <Text text="{MBRSH}"/>
+              <Text text="{MATKL}"/>
+              <Text text="{PSTAT}"/>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+
+    <footer>
+      <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button text="Back" type="Reject" press="onBack" icon="sap-icon://nav-back"/>
+      </OverflowToolbar>
+    </footer>
+
+  </Page>
+
+</mvc:View>

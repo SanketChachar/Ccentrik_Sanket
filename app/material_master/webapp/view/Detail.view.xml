@@ -1,0 +1,39 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.Detail"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+<Page title="Material Details" showNavButton="true" navButtonPress="onBack">
+
+  <content>
+
+    <!-- HEADER -->
+    <ObjectHeader
+      title="{MATNR}"
+      number="{MTART}"
+      intro="{MBRSH}" />
+
+    <!-- DESCRIPTION -->
+    <Title text="Description"/>
+    <Text text="{toZMAKTX/0/MAKTX}"/>
+
+    <!-- PLANTS -->
+    <Title text="Plants"/>
+    <List items="{toZMARC}">
+      <StandardListItem
+        title="{WERKS}"
+        description="{MMSTA}" />
+    </List>
+
+    <!-- STORAGE -->
+    <Title text="Storage"/>
+    <List items="{toZMATSTORAGE}">
+      <StandardListItem
+        title="{LGORT}"
+        description="{MENGE} {MEINS}" />
+    </List>
+
+  </content>
+
+</Page>
+</mvc:View>
