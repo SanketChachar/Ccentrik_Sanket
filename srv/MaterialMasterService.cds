@@ -1,30 +1,34 @@
-/* Begin of change by Sanket and Arya, 29/03/2026
-    purpose : Expose ZMARA, ZMARC, ZMARD, ZMAKTX as OData V4 endpoints
-    Change endpoints support full CRUD
-    display endpoints are read-only
-     */
-
 using {ZMM_SBC_2903 as db} from '../db/zmara_schema';
 
 service MaterialMasterService {
 
-    //Change Transaction (CT_ZMARA).
-    //Full Create,Read,Update and Delete allowed
-    @cds.redirection.target   // ← ADD THIS ONE LINE – tells CAP "this is the main ZMARA"
+    @cds.redirection.target
     entity ZMARA as projection on db.ZMARA;
+
     entity ZMARC as projection on db.ZMARC;
-    @cds.redirection.target   // ← ADD THIS ONE LINE – tells CAP "this is the main ZMARD"
+
+    @cds.redirection.target
     entity ZMARD as projection on db.ZMARD;
-    entity ZMAKTX as  projection on db.ZMAKTX;
 
-    //Display Transaction (DT_ZMARA).
-    //Read only no change allowed.
-    
-    @readonly
-    entity ZMARA_Display as projection on db.ZMARA;
+    entity ZMAKTX as projection on db.ZMAKTX;
 
-    @readonly
-    entity ZMARD_Display as projection on db.ZMARD;
+    entity Z_MAT_STORAGE as projection on db.Z_MAT_STORAGE;
+
+    // ✅ SIMPLE READ (NO COMPLEX KEYS)
+    entity ZMARA_READ as select from db.ZMARA as ZMARA
+
+        left join db.ZMAKTX as ZMAKTX
+            on ZMARA.MATNR = ZMAKTX.MATNR
+
+    {
+        key ZMARA.MATNR,
+
+        ZMARA.MTART,
+        ZMARA.MBRSH,
+        ZMARA.MATKL,
+        ZMARA.PSTAT,
+        ZMARA.LAEDA,
+
+        ZMAKTX.MAKTX
+    };
 }
-
-//End of Changes by Sanket and Arya, 29/03/2026

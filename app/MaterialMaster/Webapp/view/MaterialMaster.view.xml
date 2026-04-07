@@ -1,0 +1,99 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.MaterialMaster"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  displayBlock="true">
+
+  <Page title="Material Master" class="sapUiContentPadding" showHeader="true">
+
+    <content>
+
+      <!-- Header -->
+      <VBox class="sapUiSmallMarginBottom">
+        <Title text="Material Master Operations" level="H2"/>
+        <Text text="Select an action to manage material data"/>
+      </VBox>
+
+      <!-- Tiles Layout -->
+      <l:Grid defaultSpan="L3 M6 S12" hSpacing="1" vSpacing="1">
+
+        <!-- CREATE -->
+        <GenericTile
+          header="Create Material"
+          subheader="Add new material"
+          press="onCreate"
+          class="sapUiTinyMargin">
+
+          <TileContent>
+            <content>
+              <NumericContent
+                value=""
+                icon="sap-icon://add-product"
+                withMargin="false"/>
+            </content>
+          </TileContent>
+
+        </GenericTile>
+
+        <!-- READ -->
+        <GenericTile
+          header="Display Material"
+          subheader="View material data"
+          press="onRead"
+          class="sapUiTinyMargin">
+
+          <TileContent>
+            <content>
+              <NumericContent
+                value=""
+                icon="sap-icon://search"
+                withMargin="false"/>
+            </content>
+          </TileContent>
+
+        </GenericTile>
+
+        <!-- UPDATE -->
+        <GenericTile
+          header="Update Material"
+          subheader="Modify existing data"
+          press="onUpdate"
+          class="sapUiTinyMargin">
+
+          <TileContent>
+            <content>
+              <NumericContent
+                value=""
+                icon="sap-icon://edit"
+                withMargin="false"/>
+            </content>
+          </TileContent>
+
+        </GenericTile>
+
+        <!-- DELETE -->
+        <GenericTile
+          header="Delete Material"
+          subheader="Remove material"
+          press="onDelete"
+          class="sapUiTinyMargin">
+
+          <TileContent>
+            <content>
+              <NumericContent
+                value=""
+                icon="sap-icon://delete"
+                withMargin="false"/>
+            </content>
+          </TileContent>
+
+        </GenericTile>
+
+      </l:Grid>
+
+    </content>
+
+  </Page>
+
+</mvc:View>

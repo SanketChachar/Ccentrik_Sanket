@@ -1,0 +1,90 @@
+{
+  "sap.app": {
+    "id": "zmm_sbc_2903",
+    "type": "application",
+    "title": "Material Master UI",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+  "mainService": {
+    "uri": "/odata/v4/material-master/",   
+    "type": "OData",
+    "settings": {
+      "odataVersion": "4.0"
+    }
+  }
+}
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "zmm_sbc_2903.view.MaterialMaster",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
+      }
+    },
+
+    "models": {
+      "": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "dataSource": "mainService",
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "rootView": {
+  "viewName": "zmm_sbc_2903.view.App",
+  "type": "XML",
+  "async": true,
+  "id": "app"
+},
+
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "zmm_sbc_2903.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+  { "name": "Main", "pattern": "", "target": "Main" },
+  { "name": "Create", "pattern": "create", "target": "Create" },
+  { "name": "Read", "pattern": "read", "target": "Read" },
+  { "name": "Update", "pattern": "update", "target": "Update" },
+  { "name": "Delete", "pattern": "delete", "target": "Delete" }
+],
+
+"targets": {
+  "Main":   { "viewName": "MaterialMaster", "viewLevel": 1 },
+  "Create": { "viewName": "Create", "viewLevel": 2 },
+  "Read":   { "viewName": "Read", "viewLevel": 2 },
+  "Update": { "viewName": "Update", "viewLevel": 2 },
+  "Delete": { "viewName": "Delete", "viewLevel": 2 }
+}
+    }
+  }
+}

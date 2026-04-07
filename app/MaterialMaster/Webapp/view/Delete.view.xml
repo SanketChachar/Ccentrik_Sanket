@@ -1,0 +1,25 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.Delete"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Page title="Delete Material" showNavButton="true" navButtonPress="onBack">
+
+    <content>
+
+      <VBox class="sapUiMediumMargin">
+
+        <Title text="Delete Material" level="H3"/>
+        <Text text="Enter material number to delete"/>
+
+        <HBox class="sapUiSmallMarginTop">
+          <Input id="del_matnr" placeholder="Enter MATNR"/>
+          <Button text="Delete" press="onDelete" type="Reject" class="sapUiSmallMarginBegin"/>
+        </HBox>
+
+      </VBox>
+
+    </content>
+
+  </Page>
+</mvc:View>

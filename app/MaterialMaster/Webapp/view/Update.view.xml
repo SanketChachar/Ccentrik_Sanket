@@ -1,0 +1,59 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.Update"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form">
+
+  <Page title="Update Material" showNavButton="true" navButtonPress="onBack">
+
+    <content>
+
+      <VBox class="sapUiMediumMargin">
+
+        <Title text="Update Material" level="H3"/>
+        <Text text="Load material and modify details"/>
+
+        <!-- Load -->
+        <HBox class="sapUiSmallMarginTop">
+          <Input id="upd_searchMatnr" placeholder="Enter MATNR"/>
+          <Button text="Load" press="onLoad" type="Emphasized" class="sapUiSmallMarginBegin"/>
+        </HBox>
+
+        <!-- Form -->
+        <form:SimpleForm
+          id="upd_updateForm"
+          visible="false"
+          editable="true"
+          layout="ResponsiveGridLayout"
+          class="sapUiMediumMarginTop">
+
+          <form:content>
+
+            <Label text="Material Type"/>
+            <Input value="{updateModel>/MTART}"/>
+
+            <Label text="Industry Sector"/>
+            <Input value="{updateModel>/MBRSH}"/>
+
+            <Label text="Material Group"/>
+            <Input value="{updateModel>/MATKL}"/>
+
+            <Label text="Status"/>
+            <Input value="{updateModel>/PSTAT}"/>
+
+          </form:content>
+        </form:SimpleForm>
+
+      </VBox>
+
+    </content>
+
+    <footer>
+      <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button text="Update" type="Emphasized" press="onUpdate" icon="sap-icon://edit"/>
+      </OverflowToolbar>
+    </footer>
+
+  </Page>
+</mvc:View>

@@ -1,0 +1,54 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.Create"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form">
+
+  <Page title="Create Material" showNavButton="true" navButtonPress="onBack">
+
+    <content>
+
+      <VBox class="sapUiMediumMargin">
+
+        <Title text="Create New Material" level="H3"/>
+        <Text text="Enter material details below"/>
+
+        <form:SimpleForm
+          editable="true"
+          layout="ResponsiveGridLayout"
+          class="sapUiMediumMarginTop">
+
+          <form:content>
+
+            <Label text="Material Number"/>
+            <Input value="{newMaterial>/MATNR}"/>
+
+            <Label text="Material Type"/>
+            <Input value="{newMaterial>/MTART}"/>
+
+            <Label text="Industry Sector"/>
+            <Input value="{newMaterial>/MBRSH}"/>
+
+            <Label text="Material Group"/>
+            <Input value="{newMaterial>/MATKL}"/>
+
+            <Label text="Status"/>
+            <Input value="{newMaterial>/PSTAT}"/>
+
+          </form:content>
+        </form:SimpleForm>
+
+      </VBox>
+
+    </content>
+
+    <footer>
+      <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button text="Save" type="Emphasized" press="onSave" icon="sap-icon://save"/>
+        <Button text="Clear" press="onClear"/>
+      </OverflowToolbar>
+    </footer>
+
+  </Page>
+</mvc:View>

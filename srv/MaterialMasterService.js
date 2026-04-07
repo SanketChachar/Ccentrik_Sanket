@@ -167,6 +167,51 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+
+
+// Validations for  – Z_MAT_STORAGE
+
+srv.before('CREATE', 'Z_MAT_STORAGE', async (req) => {
+    const d = req.data;
+
+    //Check ZMARA
+    const mat = await SELECT.one.from(ZMARA).where({ MATNR: d.MATNR });
+    if (!mat) {
+        return req.reject(404, `Material '${d.MATNR}' does not exist`);
+    }
+
+    //Check ZMARC (Plant)
+    const plant = await SELECT.one.from(ZMARC).where({
+        MATNR: d.MATNR,
+        WERKS: d.WERKS
+    });
+
+    if (!plant) {
+        return req.reject(404, `Plant '${d.WERKS}' not found for material '${d.MATNR}'`);
+    }
+
+    //Check ZMARD (Storage)
+    const storage = await SELECT.one.from(ZMARD).where({
+        MATNR: d.MATNR,
+        WERKS: d.WERKS,
+        LGORT: d.LGORT
+    });
+
+    if (!storage) {
+        return req.reject(404, `Storage '${d.LGORT}' not found`);
+    }
+
+    //Validate MENGE
+    if (d.MENGE === undefined || d.MENGE <= 0) {
+        return req.reject(400, "MENGE must be greater than 0");
+    }
+
+    //Validate MEINS
+    if (!d.MEINS) {
+        return req.reject(400, "MEINS is required");
+    }
+});
+
 });
 
 // *End of Changes by Sanket and Arya, 29/03/2026*

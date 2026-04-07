@@ -1,0 +1,52 @@
+<mvc:View
+  controllerName="zmm_sbc_2903.controller.Read"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Page title="Display Material" showNavButton="true" navButtonPress="onBack">
+
+    <content>
+
+      <VBox class="sapUiMediumMargin">
+
+        <Title text="Material Lookup" level="H3"/>
+        <Text text="Search by Material Number or fetch all records"/>
+
+        <!-- Search -->
+        <HBox class="sapUiSmallMarginTop">
+          <Input id="searchMatnr" placeholder="Enter MATNR"/>
+          <Button text="Search" press="onSearch" type="Emphasized" class="sapUiSmallMarginBegin"/>
+          <Button text="Fetch All" press="onFetchAll" class="sapUiSmallMarginBegin"/>
+        </HBox>
+
+        <!-- Table -->
+        <Table id="resultsTable" visible="false" class="sapUiMediumMarginTop">
+
+          <columns>
+            <Column><Text text="MATNR"/></Column>
+            <Column><Text text="MTART"/></Column>
+            <Column><Text text="MBRSH"/></Column>
+            <Column><Text text="MATKL"/></Column>
+            <Column><Text text="PSTAT"/></Column>
+          </columns>
+
+          <items>
+            <ColumnListItem>
+              <cells>
+                <Text text="{MATNR}"/>
+                <Text text="{MTART}"/>
+                <Text text="{MBRSH}"/>
+                <Text text="{MATKL}"/>
+                <Text text="{PSTAT}"/>
+              </cells>
+            </ColumnListItem>
+          </items>
+
+        </Table>
+
+      </VBox>
+
+    </content>
+
+  </Page>
+</mvc:View>

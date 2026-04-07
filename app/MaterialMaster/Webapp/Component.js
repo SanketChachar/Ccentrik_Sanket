@@ -1,7 +1,6 @@
 sap.ui.define([
-  "sap/ui/core/UIComponent",
-  "zmm_sbc_2903/model/models"
-], function (UIComponent, models) {
+  "sap/ui/core/UIComponent"
+], function (UIComponent) {
   "use strict";
 
   return UIComponent.extend("zmm_sbc_2903.Component", {
@@ -11,7 +10,6 @@ sap.ui.define([
 
     init: function () {
       UIComponent.prototype.init.apply(this, arguments);
-      this.setModel(models.createMainModel());
       this.getRouter().initialize();
     }
   });

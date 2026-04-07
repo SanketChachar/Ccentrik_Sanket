@@ -236,3 +236,63 @@ GET {{baseUrl}}/ZMARA?$expand=toZMARC,toZMARD,toZMAKTX
 ### Expected: 204 No Content
 ### ══════════════════════════════════════════════
 DELETE {{baseUrl}}/ZMARA(MATNR='601')
+
+
+
+
+
+
+
+### TEST 20 — For Z_MAT_STORAGE
+### ✔ 200 OK
+###✔ Returns all materials (CSV + created ones)
+GET {{baseUrl}}/ZMARA?$expand=toZMARC,toZMARD,toZMAKTX,toZMATSTORAGE
+
+
+### TEST 21 — VALID STORAGE
+POST {{baseUrl}}/Z_MAT_STORAGE
+Content-Type: application/json
+
+{
+  "MATNR": "511",
+  "WERKS": "201",
+  "LGORT": "RM6",
+  "MENGE": 100,
+  "MEINS": "KG"
+}
+
+### TEST 22 — INVALID MATERIAL
+POST {{baseUrl}}/Z_MAT_STORAGE
+Content-Type: application/json
+
+{
+  "MATNR": "999",
+  "WERKS": "201",
+  "LGORT": "RM1",
+  "MENGE": 100,
+  "MEINS": "KG"
+}
+
+### TEST 23 — INVALID PLANT
+POST {{baseUrl}}/Z_MAT_STORAGE
+Content-Type: application/json
+
+{
+  "MATNR": "501",
+  "WERKS": "999",
+  "LGORT": "RM1",
+  "MENGE": 100,
+  "MEINS": "KG"
+}
+
+### TEST 24 — INVALID STORAGE
+POST {{baseUrl}}/Z_MAT_STORAGE
+Content-Type: application/json
+
+{
+  "MATNR": "501",
+  "WERKS": "201",
+  "LGORT": "XXX",
+  "MENGE": 100,
+  "MEINS": "KG"
+}

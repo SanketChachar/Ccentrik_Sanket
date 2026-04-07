@@ -8,16 +8,32 @@ sap.ui.define([
 
  return Controller.extend("zmm_sbc_2903.controller.Create", {
     onInit: function () {
-      // Local JSON model for form fields
-      const oModel = new JSONModel({
-        crt_matnr: "",
-        crt_mtart: "",
-        crt_mbrsh: "",
-        crt_matkr: "",
-        crt_pstat: ""
-      });
-      this.getView().setModel(oModel, "newMaterial");
-    },
+  const oModel = new JSONModel({
+    MATNR: "",
+    MTART: "",
+    MBRSH: "",
+    MATKL: "",
+    PSTAT: ""
+  });
+  this.getView().setModel(oModel, "newMaterial");
+},
+
+onSave: function () {
+  const oData = this.getView().getModel("newMaterial").getData();
+
+  if (!oData.MATNR || !oData.MTART) {
+    sap.m.MessageBox.error("Material Number and Material Type are required.");
+    return;
+  }
+
+  const oModel = this.getOwnerComponent().getModel();
+  const oListBinding = oModel.bindList("/ZMARA");
+
+  oListBinding.create(oData);
+
+  sap.m.MessageToast.show("Created successfully");
+  this.onClear();
+},
 
     onSave: function () {
       const oLocalModel = this.getView().getModel("newMaterial");
